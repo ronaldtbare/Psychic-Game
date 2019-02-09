@@ -21,9 +21,10 @@ function generateLetter() {
 
 // reset for next round
 function reset(){
-guessesLeft = 9;
-userChoice = "";
-document.getElementById("gsf").innerHTML = "";
+    guessesLeft = 9;
+    document.getElementById("gl").innerHTML = guessesLeft;
+    userChoice = "";
+    document.getElementById("gsf").innerHTML = "";
 }
   
     var computerChoice = generateLetter();
@@ -36,7 +37,7 @@ document.getElementById("gsf").innerHTML = "";
         
         // create loop for 9 guesses
 
-            if (guessesLeft >= 1) {
+            if (guessesLeft >= 2) {
                 //play the game
 
                 document.getElementById("gsf").innerHTML = document.getElementById("gsf").innerHTML+userChoice;
@@ -48,12 +49,14 @@ document.getElementById("gsf").innerHTML = "";
                     wins = wins + 1;
                     alert("You win!");
                     document.getElementById("wins").innerHTML = wins; 
-                    reset();  
+                    reset(); 
+                    
+                } else {
+                    // update guesses left and guesses so far
+                    guessesLeft = guessesLeft - 1;
+                    document.getElementById("gl").innerHTML = guessesLeft;
                 }
 
-                // update guesses left and guesses so far
-                guessesLeft = guessesLeft - 1;
-                document.getElementById("gl").innerHTML = guessesLeft;
             }
 
             else {
