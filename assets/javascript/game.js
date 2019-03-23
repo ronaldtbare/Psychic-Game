@@ -4,6 +4,7 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var round = 1;
+var computerChoice="";
 
 // create an array for alphabet
 
@@ -14,8 +15,8 @@ var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 // function generate random letter
 function generateLetter() {
     var randomNum = Math.floor(Math.random() * 26);
-    var computerChoice = alpha[randomNum];
-    return computerChoice
+    computerChoice = alpha[randomNum];
+    return computerChoice;
 }
 
 
@@ -62,9 +63,10 @@ function reset(){
             else {
                 //nah
                 losses = losses + 1;
-                alert("You lose!");
+                alert("You lose! The correct answer is "+computerChoice);
                 document.getElementById("losses").innerHTML = losses;
                reset();
+               generateLetter();
 
             }
 
